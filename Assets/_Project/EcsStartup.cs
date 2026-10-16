@@ -163,6 +163,14 @@ public class EcsStartup : MonoBehaviour
         _world.Destroy();
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause && _systems != null)
+        {
+            _saveService.Save(CreateSaveData());
+        }
+    }
+
     private GameSaveData CreateSaveData()
     {
         GameSaveData data = new GameSaveData();
