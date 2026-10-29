@@ -6,6 +6,8 @@ public class BusinessView : MonoBehaviour
 {
     [SerializeField] private Text _businessName;
 
+    [SerializeField] private int _businessId;
+
     [SerializeField] private Button _purchaseLevelButton;
     [SerializeField] private Button _purchaseFirstUpgradeButton;
     [SerializeField] private Button _purchaseSecondUpgradeButton;
@@ -16,6 +18,7 @@ public class BusinessView : MonoBehaviour
     [SerializeField] private Text _incomeText;
     [SerializeField] private RectTransform _incomeProgressBar;
 
+    public int BusinessId => _businessId;
 
     public event Action PurchaseButtonPressed;
     public event Action FirstUpgradeButtonPressed;

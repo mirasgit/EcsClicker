@@ -11,6 +11,8 @@ public class BusinessPresenter
 
     private readonly int _entity;
 
+    public int Entity => _entity;
+
     public BusinessPresenter(
     BusinessView view,
     int entity,
@@ -27,24 +29,6 @@ public class BusinessPresenter
         _businessNames = businessNames;
     }
 
-    public void UpdateView()
-    {
-        ref BusinessComponent entityBusiness = ref _businessPool.Get(_entity);
-        float firstUpgradeIncomeBoost = entityBusiness.FirstUpgradeBought ? _businessData.FirstUpgradeIncomeBoost : 0;
-        float secondUpgradeIncomeBoost = entityBusiness.SecondUpgradeBought ? _businessData.SecondUpgradeIncomeBoost : 0;
-        int level = entityBusiness.Level;
-        float incomeProgress = entityBusiness.IncomeProgress / _businessData.IncomeLatency;
-        int firstUpgradeBoost = (int)(_businessData.FirstUpgradeIncomeBoost * 100f);
-        int secondUpgradeBoost = (int)(_businessData.SecondUpgradeIncomeBoost * 100f);
-        _view.SetBusinessName(_businessNames.BusinessName);
-        _view.SetLevel(level);
-        _view.SetIncome(level* _businessData.BaseIncome * (1 + firstUpgradeIncomeBoost + secondUpgradeIncomeBoost));
-        _view.SetNextLevelCost((level + 1) * _businessData.BaseCost);
-        _view.SetIncomeProgress(incomeProgress);
-        _view.SetFirstUpgradeInfo(_businessNames.FirstUpgradeName ,entityBusiness.FirstUpgradeBought, _businessData.FirstUpgradeBaseCost, firstUpgradeBoost);
-        _view.SetSecondUpgradeInfo(_businessNames.SecondUpgradeName,entityBusiness.SecondUpgradeBought, _businessData.SecondUpgradeBaseCost, secondUpgradeBoost);
-    }
-
     public void Subscribe()
     {
         _view.PurchaseButtonPressed += OnPurchaseButtonPressed;
@@ -59,6 +43,35 @@ public class BusinessPresenter
         _view.SecondUpgradeButtonPressed -= OnSecondUpgradeButtonPressed;
     }
 
+    public void InitializeView()
+    {
+        _view.SetBusinessName(_businessNames.BusinessName);
+        UpdateBusinessInfo();
+    }
+
+    public void UpdateBusinessInfo()
+    {
+        ref BusinessComponent entityBusiness = ref _businessPool.Get(_entity);
+
+        int firstUpgradeBoost = (int)(_businessData.FirstUpgradeIncomeBoost * 100f);
+        int secondUpgradeBoost = (int)(_businessData.SecondUpgradeIncomeBoost * 100f);
+        int level = entityBusiness.Level;
+
+        _view.SetLevel(level);
+        _view.SetIncome(BusinessCalculator.CalculateIncome(entityBusiness, _businessData));
+        _view.SetNextLevelCost(BusinessCalculator.CalculateLevelCost(entityBusiness, _businessData));
+        _view.SetFirstUpgradeInfo(_businessNames.FirstUpgradeName, entityBusiness.FirstUpgradeBought, _businessData.FirstUpgradeBaseCost, firstUpgradeBoost);
+        _view.SetSecondUpgradeInfo(_businessNames.SecondUpgradeName, entityBusiness.SecondUpgradeBought, _businessData.SecondUpgradeBaseCost, secondUpgradeBoost);
+    }
+
+    public void UpdateProgress()
+    {
+        ref BusinessComponent entityBusiness = ref _businessPool.Get(_entity);
+
+        float incomeProgress = entityBusiness.IncomeProgress / _businessData.IncomeLatency;
+
+        _view.SetIncomeProgress(incomeProgress);
+    }
     private void OnSecondUpgradeButtonPressed()
     {
         if (!_requestPool.Has(_entity))

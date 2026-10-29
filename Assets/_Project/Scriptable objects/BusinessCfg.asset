@@ -13,35 +13,40 @@ MonoBehaviour:
   m_Name: BusinessCfg
   m_EditorClassIdentifier: Assembly-CSharp::BusinessConfig
   Businesses:
-  - IncomeLatency: 3
+  - BusinessId: 1
+    IncomeLatency: 3
     BaseCost: 3
     BaseIncome: 3
     FirstUpgradeBaseCost: 50
     FirstUpgradeIncomeBoost: 0.5
     SecondUpgradeBaseCost: 400
     SecondUpgradeIncomeBoost: 1
-  - IncomeLatency: 6
+  - BusinessId: 2
+    IncomeLatency: 6
     BaseCost: 40
     BaseIncome: 40
     FirstUpgradeBaseCost: 1200
     FirstUpgradeIncomeBoost: 1
     SecondUpgradeBaseCost: 4000
     SecondUpgradeIncomeBoost: 2
-  - IncomeLatency: 10
+  - BusinessId: 3
+    IncomeLatency: 10
     BaseCost: 200
     BaseIncome: 200
     FirstUpgradeBaseCost: 6000
     FirstUpgradeIncomeBoost: 1
     SecondUpgradeBaseCost: 20000
     SecondUpgradeIncomeBoost: 1.5
-  - IncomeLatency: 17
+  - BusinessId: 4
+    IncomeLatency: 17
     BaseCost: 1000
     BaseIncome: 1000
     FirstUpgradeBaseCost: 15000
     FirstUpgradeIncomeBoost: 1
     SecondUpgradeBaseCost: 50000
     SecondUpgradeIncomeBoost: 2
-  - IncomeLatency: 30
+  - BusinessId: 5
+    IncomeLatency: 30
     BaseCost: 5000
     BaseIncome: 5000
     FirstUpgradeBaseCost: 100000

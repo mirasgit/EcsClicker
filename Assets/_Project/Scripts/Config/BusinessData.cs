@@ -2,6 +2,8 @@
 [System.Serializable]
 public class BusinessData
 {
+    public int BusinessId;
+
     public int IncomeLatency;
 
     public int BaseCost;

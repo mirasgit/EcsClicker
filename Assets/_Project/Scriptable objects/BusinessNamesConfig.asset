@@ -13,18 +13,23 @@ MonoBehaviour:
   m_Name: BusinessNamesConfig
   m_EditorClassIdentifier: Assembly-CSharp::BusinessNamesConfig
   BusinessNames:
-  - BusinessName: McDonalds
+  - BusinessId: 1
+    BusinessName: McDonalds
     FirstUpgradeName: Happy Meals
     SecondUpgradeName: New Sauce
-  - BusinessName: Burger King
+  - BusinessId: 2
+    BusinessName: Burger King
     FirstUpgradeName: Super Whopper
     SecondUpgradeName: Elite Whopper
-  - BusinessName: KFC
+  - BusinessId: 3
+    BusinessName: KFC
     FirstUpgradeName: Digital Menu
     SecondUpgradeName: Black folks unbanned
-  - BusinessName: Rockstar North
+  - BusinessId: 4
+    BusinessName: Rockstar North
     FirstUpgradeName: Add Anti-Cheat
     SecondUpgradeName: Release GTA VI
-  - BusinessName: Valve
+  - BusinessId: 5
+    BusinessName: Valve
     FirstUpgradeName: Release CS3 and Dota 3
     SecondUpgradeName: Release Half-Life 3

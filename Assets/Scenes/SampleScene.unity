@@ -1495,10 +1495,10 @@ RectTransform:
   - {fileID: 854027406}
   m_Father: {fileID: 907444731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 302.809}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 243, y: -1410.6405}
+  m_SizeDelta: {x: 470, y: 302.809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303840142
 MonoBehaviour:
@@ -1513,6 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BusinessView
   _businessName: {fileID: 475440873}
+  _businessId: 5
   _purchaseLevelButton: {fileID: 1085562318}
   _purchaseFirstUpgradeButton: {fileID: 54978192}
   _purchaseSecondUpgradeButton: {fileID: 601789165}
@@ -2592,10 +2593,10 @@ RectTransform:
   - {fileID: 1344345592}
   m_Father: {fileID: 907444731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 302.809}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 243, y: -472.2135}
+  m_SizeDelta: {x: 470, y: 302.809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542316261
 MonoBehaviour:
@@ -2610,6 +2611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BusinessView
   _businessName: {fileID: 1780723100}
+  _businessId: 2
   _purchaseLevelButton: {fileID: 174488903}
   _purchaseFirstUpgradeButton: {fileID: 438852278}
   _purchaseSecondUpgradeButton: {fileID: 881853246}
@@ -4022,7 +4024,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1570.0449}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &907444732
 MonoBehaviour:
@@ -4263,10 +4265,10 @@ RectTransform:
   - {fileID: 495015582}
   m_Father: {fileID: 907444731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 302.809}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 243, y: -785.02246}
+  m_SizeDelta: {x: 470, y: 302.809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970882426
 MonoBehaviour:
@@ -4281,6 +4283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BusinessView
   _businessName: {fileID: 1317892196}
+  _businessId: 3
   _purchaseLevelButton: {fileID: 885630376}
   _purchaseFirstUpgradeButton: {fileID: 1141850684}
   _purchaseSecondUpgradeButton: {fileID: 1998058647}
@@ -5070,10 +5073,10 @@ RectTransform:
   - {fileID: 1611464671}
   m_Father: {fileID: 907444731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 302.809}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 243, y: -159.4045}
+  m_SizeDelta: {x: 470, y: 302.809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1209906922
 MonoBehaviour:
@@ -5161,6 +5164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BusinessView
   _businessName: {fileID: 554445194}
+  _businessId: 1
   _purchaseLevelButton: {fileID: 834118610}
   _purchaseFirstUpgradeButton: {fileID: 1884393291}
   _purchaseSecondUpgradeButton: {fileID: 1456287108}
@@ -8385,9 +8389,9 @@ RectTransform:
   m_Father: {fileID: 185006072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981198043
 MonoBehaviour:
@@ -8616,10 +8620,10 @@ RectTransform:
   - {fileID: 1230963066}
   m_Father: {fileID: 907444731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 302.809}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 243, y: -1097.8315}
+  m_SizeDelta: {x: 470, y: 302.809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2040532901
 MonoBehaviour:
@@ -8634,6 +8638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BusinessView
   _businessName: {fileID: 1928836201}
+  _businessId: 4
   _purchaseLevelButton: {fileID: 2113243623}
   _purchaseFirstUpgradeButton: {fileID: 1613732031}
   _purchaseSecondUpgradeButton: {fileID: 1232199541}

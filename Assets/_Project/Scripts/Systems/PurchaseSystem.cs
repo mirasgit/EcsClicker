@@ -3,17 +3,19 @@ using System.Collections.Generic;
 
 public class PurchaseSystem : IEcsInitSystem, IEcsRunSystem
 {
-    private readonly BusinessConfig _businessConfig;
+    private readonly Dictionary<int, BusinessData> _businessDataById;
     private readonly int _balanceId;
     private readonly List<int> _processedPurchases = new();
 
     private EcsPool<BusinessComponent> _businessPool;
     private EcsPool<PurchaseRequest> _requestPool;
     private EcsPool<BalanceComponent> _balancePool;
+    private EcsPool<BusinessChanged> _businessChangedPool;
+    private EcsPool<BalanceChanged> _balanceChangedPool;
     private EcsFilter _filter;
-    public PurchaseSystem(BusinessConfig businessConfig, int balanceId)
+    public PurchaseSystem(Dictionary<int, BusinessData> businessDataById, int balanceId)
     {
-        _businessConfig = businessConfig;
+        _businessDataById = businessDataById;
         _balanceId = balanceId;
     }
 
@@ -24,7 +26,8 @@ public class PurchaseSystem : IEcsInitSystem, IEcsRunSystem
         _balancePool = world.GetPool<BalanceComponent>();
         _filter = world.Filter<BusinessComponent>().Inc<PurchaseRequest>().End();
         _requestPool = world.GetPool<PurchaseRequest>();
-        
+        _businessChangedPool = world.GetPool<BusinessChanged>();
+        _balanceChangedPool = world.GetPool<BalanceChanged>();
     }
 
     public void Run(IEcsSystems systems)
@@ -35,16 +38,18 @@ public class PurchaseSystem : IEcsInitSystem, IEcsRunSystem
             _processedPurchases.Add(entity);
             ref BusinessComponent business = ref _businessPool.Get(entity);
             int businessId = business.BusinessId;
-            BusinessData data = _businessConfig.Businesses[businessId];
+            BusinessData data = _businessDataById[businessId];
                 
             switch (_requestPool.Get(entity).Type)
             {
                 case PurchaseType.Level:
-                    int levelCost = (business.Level + 1) * data.BaseCost;
-                    if (balance.Value >= levelCost)
+                    int levelcost = BusinessCalculator.CalculateLevelCost(business, data);
+                    if (balance.Value >= levelcost)
                     {
-                        balance.Value -= levelCost;
+                        balance.Value -= levelcost;
                         business.Level++;
+
+                        MarkPurchaseChanges(entity);
                     }
                     break;
 
@@ -54,6 +59,8 @@ public class PurchaseSystem : IEcsInitSystem, IEcsRunSystem
                     {
                         balance.Value -= firstUpgradeCost;
                         business.FirstUpgradeBought = true;
+
+                        MarkPurchaseChanges(entity);
                     }
                     break;
 
@@ -63,6 +70,8 @@ public class PurchaseSystem : IEcsInitSystem, IEcsRunSystem
                     {
                         balance.Value -= secondUpgradeCost;
                         business.SecondUpgradeBought = true;
+
+                        MarkPurchaseChanges(entity);
                     }
                     break;
 
@@ -76,6 +85,18 @@ public class PurchaseSystem : IEcsInitSystem, IEcsRunSystem
             _requestPool.Del(entity);
         }
         _processedPurchases.Clear();
+    }
+
+    private void MarkPurchaseChanges(int entity)
+    {
+        if (!_balanceChangedPool.Has(_balanceId))
+        {
+            _balanceChangedPool.Add(_balanceId);
+        }
+        if (!_businessChangedPool.Has(entity))
+        {
+            _businessChangedPool.Add(entity);
+        }
     }
 
 }
